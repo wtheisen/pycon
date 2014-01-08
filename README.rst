@@ -23,6 +23,7 @@ To get running locally
 
   (For production, install -r requirements/project.txt).
 
+* Compile the locale ``python setup.py compile_catalog -l fr -d locale -D django``
 * Copy ``pycon/settings/local.py-example`` to ``pycon/settings/local.py``.
 * Edit ``pycon/settings/local.py`` according to the comments. Note that you
   `will` have to edit it; by default everything there is commented out.
