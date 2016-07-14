@@ -54,14 +54,17 @@
   - name: Copy settings file
     copy:
       src=/vagrant/pycon/settings/local.py-example
-      dest=/vagrant/pycon/settings/local.py
+      dest=/tmp/local.py
       owner=vagrant group=vagrant
 
   - name: Activate developer settings
     lineinfile:
-      dest=/vagrant/pycon/settings/local.py
+      dest=/tmp/local.py
       regexp='^#from .dev'
       line='from .dev import *'
+  
+  - name: Transfer temp settings file
+    shell: mv /tmp/local.py /vagrant/pycon/settings/local.py
 
   - name: Install an ancient version of the LESS compiler for CSS
     command: npm install -g less@1.3.3
