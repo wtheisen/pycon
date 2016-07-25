@@ -199,7 +199,7 @@
                         <h4>Review Sections</h4>
 
                         <ul>
-                            {% for section, perms in review_sections %}
+                            {% for section, canManage in review_sections %}
                                 <li><a href="{% url 'review_section' section.section.slug %}">{{ section }}</a></li>
                             {% endfor %}
                         </ul>
