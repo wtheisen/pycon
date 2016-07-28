@@ -2,14 +2,15 @@ from symposion.proposals.models import ProposalSection
 
 
 def reviews(request):
-    sections = []
-    manager = []
+    sections = {}
+    #manager = []
     for section in ProposalSection.objects.select_related('section'):
         if request.user.has_perm("reviews.can_review_%s" % section.section.slug):
-            sections.append(section)
+            sections[section] = False
             if request.user.has_perm("reviews.can_manage_%s" % section.section.slug):
-                manager.append(True)
-    temp = zip(sections, manager)
+                sections[section] = True
+    #temp = zip(sections, manager)
+    print 'hello'
     return {
-        "review_sections": temp,
+        "review_sections": sections,
     }
